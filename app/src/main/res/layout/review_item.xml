@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp" app:cardCornerRadius="15dp"
+    app:cardElevation="4dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/review_img"
+            android:layout_width="150dp"
+            android:src="@drawable/fruits"
+            android:layout_height="150dp"
+            app:riv_corner_radius="20dp"
+            android:scaleType="centerCrop"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/review_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_gravity="left"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_primary"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/review_farm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="false"
+                android:text="FarmName"
+                android:textSize="14sp"
+                android:textColor="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/review_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:singleLine="false"
+                android:text="Description"
+                android:textSize="11sp"
+                android:padding="8dp"
+                android:textColor="@color/grey"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="-7dp"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ratingbar"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/review_rating"
+                    android:text="5.0"
+                    android:layout_weight="1"
+                    android:layout_marginTop="3dp"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

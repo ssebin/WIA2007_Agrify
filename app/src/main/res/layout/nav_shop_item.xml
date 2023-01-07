@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp" app:cardCornerRadius="15dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/nav_farm_img"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/farm"
+            app:riv_corner_radius="10dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/nav_farm_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:layout_gravity="left"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"/>
+
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/nav_farm_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:singleLine="false"
+            android:text="Stdunt, PJ"
+            android:textSize="14sp"
+            android:textColor="@color/grey"
+            />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/nav_farm_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:singleLine="false"
+            android:text="012-3456789"
+            android:textSize="14sp"
+            android:textColor="@color/grey"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/nav_farm_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_call_24" />
+
+            <ImageView
+                android:id="@+id/nav_farm_map"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_map_24" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="-8dp"
+                android:src="@drawable/ratingbar" />
+
+            <TextView
+                android:id="@+id/nav_farm_rating"
+                android:layout_width="46dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:text="5.0" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2dp"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

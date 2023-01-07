@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Agrify</string>
+    <!-- Strings for On Boarding Screen -->
+    <!--Titles-->
+    <string name="first_slide_title">Fresh and Health Grocery</string>
+    <string name="second_slide_title">Amazing Discounts</string>
+    <string name="third_slide_title">Pickup and Delivery</string>
+    <string name="welcome_Desc">We Are Happy To Have You! Get Ready To Buy Fresh and Freeze,Grocery and Anything You Want.</string>
+
+    <!--Descriptions-->
+    <string name="slider"> slider for on boarding</string>
+    <string name="first_slide_desc">Shop without stress and pick your item from variety </string>
+    <string name="second_slide_desc">Cheaper prices than local supermarket, offer great deals and discounts</string>
+    <string name="third_slide_desc"> Delivery and pickup is available at anywhere</string>
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Get Started</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_category">Category</string>
+    <string name="menu_offers">Offers</string>
+    <string name="menu_new_products">New Products</string>
+    <string name="menu_my_orders">My Orders</string>
+    <string name="menu_my_carts">My Carts</string>
+    <string name="title_activity_nav_drawer">NavDrawer</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

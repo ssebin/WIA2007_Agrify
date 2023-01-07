@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.agrifymad.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.agrifymad.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_category"
+        android:name="com.example.agrifymad.ui.category.CategoryFragment"
+        android:label="@string/menu_category"
+        tools:layout="@layout/fragment_category" />
+
+    <fragment
+        android:id="@+id/nav_offers"
+        android:name="com.example.agrifymad.OffersFragment"
+        android:label="@string/menu_offers"
+        tools:layout="@layout/fragment_offers" />
+
+    <fragment
+        android:id="@+id/nav_farm"
+        android:name="com.example.agrifymad.ShopFragment"
+        android:label="My Shop"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment
+        android:id="@+id/nav_my_orders"
+        android:name="com.example.agrifymad.MyOrderFragment"
+        android:label="@string/menu_my_orders"
+        tools:layout="@layout/fragment_my_order" />
+
+     <fragment
+        android:id="@+id/nav_my_carts"
+        android:name="com.example.agrifymad.MyCartsFragment"
+        android:label="@string/menu_my_carts"
+        tools:layout="@layout/fragment_my_carts" />
+
+    <fragment
+        android:id="@+id/nav_review"
+        android:name="com.example.agrifymad.ReviewFragment"
+        android:label="Review"
+        tools:layout="@layout/fragment_review" />
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.agrifymad.MapFragment"
+        android:label="My Map"
+        tools:layout="@layout/fragment_map" />
+
+</navigation>
