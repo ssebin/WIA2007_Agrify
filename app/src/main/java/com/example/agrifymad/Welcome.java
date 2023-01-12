@@ -51,12 +51,13 @@ public class Welcome extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar1);
         progressBar.setVisibility(View.GONE);
+/*
         if (auth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
             startActivity(new Intent(Welcome.this, NavDrawer.class));
             Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
             finish();
-        }
+        } */
 
     }
 

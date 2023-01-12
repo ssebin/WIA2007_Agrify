@@ -59,7 +59,7 @@ public class Registration extends AppCompatActivity {
             public void onClick(View view) {
                     createUser();
                     progressBar.setVisibility(View.VISIBLE);
-                    startActivity(new Intent(Registration.this, NavDrawer.class));
+                    startActivity(new Intent(Registration.this, Login.class));
             }
         });
 

@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment {
 
     //Search View
     EditText search_box;
-    private List<ViewAllModel> viewAllModelList;
+    private ArrayList<ViewAllModel> viewAllModelList;
     private RecyclerView recyclerViewSearch;
     private ViewAllAdapter viewAllAdapter;
 

@@ -3,6 +3,7 @@ package com.example.agrifymad;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,29 +27,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ReviewFragment extends Fragment {
+public class ReviewFragment extends AppCompatActivity {
 
     FirebaseFirestore db;
     RecyclerView recyclerView;
     List<ReviewModel> reviewModelList;
     ReviewAdapter reviewAdapter;
     ProgressBar progressBar;
+    Toolbar toolbar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_review, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        //View root = inflater.inflate(R.layout.fragment_review, container, false);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_review);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("Reviews");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
-        recyclerView = root.findViewById(R.id.review_rec);
+        recyclerView = findViewById(R.id.review_rec);
 
-        progressBar = root.findViewById(R.id.progressbar);
+        progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         reviewModelList = new ArrayList<>();
-        reviewAdapter = new ReviewAdapter(getActivity(),reviewModelList);
+        reviewAdapter = new ReviewAdapter(this,reviewModelList);
         recyclerView.setAdapter(reviewAdapter);
 
         db.collection("Reviews")
@@ -67,13 +85,13 @@ public class ReviewFragment extends Fragment {
 
                             }
                         } else {
-                            Toast.makeText(getActivity(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
                         }
                     }
                 });
 
-        return root;
+        // return root;
     }
 }

@@ -49,6 +49,16 @@ public class DetailedActivity extends AppCompatActivity {
         Toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(Toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("Product Details");
+
+        Toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -146,7 +156,7 @@ public class DetailedActivity extends AppCompatActivity {
                 .collection("AddToCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-                        Toast.makeText(DetailedActivity.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetailedActivity.this, "Added To Your Cart", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });

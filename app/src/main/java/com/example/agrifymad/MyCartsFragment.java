@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyCartsFragment extends Fragment {
+public class MyCartsFragment extends AppCompatActivity {
 
     FirebaseFirestore db;
     FirebaseAuth auth;
@@ -45,6 +46,7 @@ public class MyCartsFragment extends Fragment {
     Button buyNow;
     int overAllTotalAmount;
     ProgressBar progressBar;
+    Toolbar toolbar;
 
     public MyCartsFragment() {
 
@@ -52,22 +54,38 @@ public class MyCartsFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_my_carts, container, false);
+        // View root = inflater.inflate(R.layout.fragment_my_carts, container, false);
+
+        setContentView(R.layout.fragment_my_carts);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("My Cart");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        progressBar = root.findViewById(R.id.progressbar);
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar = findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
 
-        recyclerView = root.findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setVisibility(View.GONE);
-        buyNow = root.findViewById(R.id.buy_now);
-        overTotalAmount = root.findViewById(R.id.totalPrice);
+        buyNow = findViewById(R.id.buy_now);
+        overTotalAmount = findViewById(R.id.totalPrice);
 
         /*get data from my cart adapter
         LocalBroadcastManager.getInstance(getActivity())
@@ -76,7 +94,7 @@ public class MyCartsFragment extends Fragment {
 
 
         cartModelList = new ArrayList<>();
-        cartAdapter = new MyCartAdapter(getActivity(),cartModelList);
+        cartAdapter = new MyCartAdapter(this,cartModelList);
         recyclerView.setAdapter(cartAdapter);
 
         db.collection("CurrentUser").document(auth.getCurrentUser().getUid())
@@ -107,7 +125,7 @@ public class MyCartsFragment extends Fragment {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),PaymentActivity.class);
+                Intent intent = new Intent(getApplicationContext(),PaymentActivity.class);
                 //intent.putExtra("itemList", (Serializable) cartModelList);
                 startActivity(intent);
 
@@ -118,7 +136,7 @@ public class MyCartsFragment extends Fragment {
             }
         });
 
-        return root;
+        // return root;
     }
 
 

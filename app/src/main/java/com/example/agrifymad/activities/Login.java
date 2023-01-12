@@ -20,6 +20,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Login extends AppCompatActivity {
 
@@ -30,10 +37,34 @@ public class Login extends AppCompatActivity {
     FirebaseAuth auth;
     ProgressBar progressBar;
 
+    //EditText etToken;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //etToken = findViewById(R.id.etToken);
+
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            System.out.println("Fetching FCM registration token failed");
+//                            return;
+//                        }
+//
+//                        // Get new FCM registration token
+//                        String token = task.getResult();
+//
+//                        // Log and toast
+//                        System.out.println(token);
+//                        Toast.makeText(Login.this, "Your device registration token is " + token, Toast.LENGTH_SHORT).show();
+//
+//                        etToken.setText(token);
+//                    }
+//                });
 
         auth = FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.progressbar);
@@ -54,16 +85,17 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser();
-                progressBar.setVisibility(View.VISIBLE);
-                startActivity(new Intent(Login.this, NavDrawer.class));
+                // progressBar.setVisibility(View.VISIBLE);
+                // startActivity(new Intent(Login.this, NavDrawer.class));
+                // finish();
             }
         });
     }
 
     private void loginUser() {
 
-        String userEmail = email.getText().toString();
-        String userPassword = password.getText().toString();
+        final String userEmail = email.getText().toString();
+        final String userPassword = password.getText().toString();
 
         if(TextUtils.isEmpty(userEmail)){
             Toast.makeText(this,"Email is Empty!", Toast.LENGTH_SHORT).show();
@@ -85,11 +117,14 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(Login.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.VISIBLE);
+                    startActivity(new Intent(Login.this, NavDrawer.class));
+                    //finish();
                 }
                 else{
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(Login.this,"Error, Please try again"+ task.isSuccessful(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this,"Authentication Failed.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -39,11 +41,12 @@ import com.google.firebase.storage.UploadTask;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends AppCompatActivity {
 
     CircleImageView profileImg;
     EditText name,email,number,address;
     Button update;
+    Toolbar toolbar;
 
     FirebaseStorage storage;
     FirebaseAuth auth;
@@ -53,22 +56,38 @@ public class ProfileFragment extends Fragment {
 
     String  _NAME, _EMAIL, _NUMBER, _ADDRESS;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        //View root = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("Profile");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        profileImg = root.findViewById(R.id.profile_img);
-        name = root.findViewById(R.id.profile_name);
-        email = root.findViewById(R.id.profile_email);
-        number = root.findViewById(R.id.profile_number);
-        address = root.findViewById(R.id.profile_address);
-        update = root.findViewById(R.id.update);
+        profileImg = findViewById(R.id.profile_img);
+        name = findViewById(R.id.profile_name);
+        email = findViewById(R.id.profile_email);
+        number = findViewById(R.id.profile_number);
+        address = findViewById(R.id.profile_address);
+        update = findViewById(R.id.update);
 
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                         .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -77,7 +96,7 @@ public class ProfileFragment extends Fragment {
 
                                 UserModel userModel = snapshot.getValue(UserModel.class);
 
-                                Glide.with(getContext()).load(userModel.getProfileImg()).into(profileImg);
+                                Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(profileImg);
                             }
 
                             @Override
@@ -106,12 +125,12 @@ public class ProfileFragment extends Fragment {
 
         //showAllUserData();
 
-        return root;
+        //return root;
     }
 
     private void showAllUserData(){
 
-        Intent intent = getActivity().getIntent();
+        Intent intent = this.getIntent();
         _NAME = intent.getStringExtra("name");
         _EMAIL = intent.getStringExtra("email");
         _NUMBER = intent.getStringExtra("number");
@@ -178,14 +197,14 @@ public class ProfileFragment extends Fragment {
             reference.putFile(profileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getContext(),"Uploaded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Uploaded", Toast.LENGTH_SHORT).show();
 
                     reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                                     .child("profileImg").setValue(uri.toString());
-                            Toast.makeText(getContext(),"Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

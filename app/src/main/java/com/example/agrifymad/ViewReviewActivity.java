@@ -39,6 +39,16 @@ public class ViewReviewActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("Review Details");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
@@ -53,9 +63,9 @@ public class ViewReviewActivity extends AppCompatActivity {
         viewReviewAdapter = new ViewReviewAdapter(this,viewReviewModelList);
         recyclerView.setAdapter(viewReviewAdapter);
 
-        //Getting fruit reviews
-        if (type != null && type.equalsIgnoreCase("fruit")){
-            firestore.collection("AllReviews").whereEqualTo("type","fruit").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        //Getting fruit reviews .whereEqualTo("type","fruit") .whereEqualTo("type","fruit")
+        //if (type != null && type.equalsIgnoreCase("fruit")){
+            firestore.collection("AllReviews").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -70,7 +80,7 @@ public class ViewReviewActivity extends AppCompatActivity {
 
                 }
             });
-        }
+        //}
 
         //Getting mushroom reviews
         if (type != null && type.equalsIgnoreCase("mushroom")){
@@ -112,5 +122,5 @@ public class ViewReviewActivity extends AppCompatActivity {
 
 
 
-    }
-}
+
+}}

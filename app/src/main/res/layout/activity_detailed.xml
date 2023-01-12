@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/color_primary"
         android:id="@+id/toolbar"
+        android:theme="@style/Theme.AgrifyMAD.AppBarOverlay"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,14 +182,14 @@
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="5dp"
         android:text="1"
-        android:textSize="48sp"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/remove_item"
-        app:layout_constraintTop_toTopOf="@id/relativeLayout"
-        android:layout_marginLeft="4dp"/>
+        app:layout_constraintTop_toTopOf="@id/relativeLayout" />
 
     <ImageView
         android:id="@+id/add_item"

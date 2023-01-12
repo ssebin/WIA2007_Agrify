@@ -18,7 +18,7 @@
             android:layout_height="150dp"
             android:padding="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/farm"
+            android:src="@drawable/farm_event"
             app:riv_corner_radius="10dp" />
 
 
@@ -113,14 +113,6 @@
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
                 android:text="5.0" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="2dp"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
         </LinearLayout>
 

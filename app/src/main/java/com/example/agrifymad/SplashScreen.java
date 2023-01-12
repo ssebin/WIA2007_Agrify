@@ -12,8 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.agrifymad.activities.Login;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -50,7 +53,17 @@ public class SplashScreen extends AppCompatActivity {
 
         }*/
 
-        new Handler().postDelayed(() -> {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
+//            new Handler().postDelayed(() -> {
+//                // User is signed in
+//                Intent i = new Intent(SplashScreen.this, NavDrawer.class);
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(i);
+//                    },SPLASH_SCREEN);
+//        } else {
+            new Handler().postDelayed(() -> {
 
             /*firsTime only allow onBoarding
 
@@ -75,11 +88,14 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
             */
-            Intent intent = new Intent(getApplicationContext(),Onboard.class);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(getApplicationContext(),Onboard.class);
+                startActivity(intent);
+                finish();
 
-        },SPLASH_SCREEN);
+            },SPLASH_SCREEN);
+        //}
+
+
 
 
     }

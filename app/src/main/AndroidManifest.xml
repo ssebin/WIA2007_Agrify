@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,8 +20,100 @@
         android:theme="@style/Theme.AgrifyMAD"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".NavCategoryActivity"
+            android:parentActivityName=".ui.category.CategoryFragment"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.category.CategoryFragment"
+            android:parentActivityName=".NavDrawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.profile.ProfileFragment"
+            android:parentActivityName=".NavDrawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ReviewFragment"
+            android:parentActivityName=".NavDrawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MyCartsFragment"
+            android:parentActivityName=".NavDrawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ShopFragment"
+            android:parentActivityName=".NavDrawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EventDetail_four"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EventDetail_three"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EventDetail_two"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EventDetail_one"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EventsHome"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".HistoryHome"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
         <activity
             android:name=".ViewReviewActivity"
+            android:parentActivityName=".ReviewFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -27,6 +121,7 @@
         </activity>
         <activity
             android:name=".CheckOutActivity"
+            android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,6 +129,7 @@
         </activity>
         <activity
             android:name=".PaymentActivity"
+            android:parentActivityName=".MyCartsFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -60,13 +156,7 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".PlacedOrderActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NavCategoryActivity"
+            android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -74,6 +164,7 @@
         </activity>
         <activity
             android:name=".DetailedActivity"
+            android:parentActivityName=".activities.ViewAllActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -81,6 +172,7 @@
         </activity>
         <activity
             android:name=".activities.ViewAllActivity"
+            android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

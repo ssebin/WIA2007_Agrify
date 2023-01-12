@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_farm"
             android:icon="@drawable/ic_baseline_add_business_24"
-            android:title="Farm" />
+            android:title="@string/menu_farms" />
         <item
             android:id="@+id/nav_my_orders"
             android:icon="@drawable/ic_baseline_article_24"
@@ -31,7 +31,7 @@
         <item
             android:id="@+id/nav_review"
             android:icon="@drawable/ic_baseline_reviews_24"
-            android:title="Reviews" />
+            android:title="@string/menu_review" />
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_baseline_person_24"
@@ -39,6 +39,12 @@
         <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_baseline_map_24"
-            android:title="Map" />
+            android:title="@string/menu_Map" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_logout_24"
+            android:title="@string/menu_logout"
+            />
     </group>
 </menu>

@@ -11,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,13 +34,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends AppCompatActivity {
 
     FirebaseFirestore db;
     RecyclerView recyclerView;
     List<NavCategoryModel> categoryModelList;
     NavCategoryAdapter navCategoryAdapter;
     ProgressBar progressBar;
+    Toolbar toolbar;
 
     //Search View
     EditText search_box;
@@ -46,22 +49,39 @@ public class CategoryFragment extends Fragment {
     private RecyclerView recyclerViewSearch;
     private ViewAllAdapter viewAllAdapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_category, container, false);
+        //View root = inflater.inflate(R.layout.fragment_category, container, false);
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_category);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled( true );
+        getSupportActionBar().setTitle("Category");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
-        recyclerView = root.findViewById(R.id.cat_rec);
+        recyclerView = findViewById(R.id.cat_rec);
 
-        progressBar = root.findViewById(R.id.progressbar);
+        progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
         //Category items
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false ));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         categoryModelList = new ArrayList<>();
-        navCategoryAdapter = new NavCategoryAdapter(getActivity(),categoryModelList);
+        navCategoryAdapter = new NavCategoryAdapter(this,categoryModelList);
         recyclerView.setAdapter(navCategoryAdapter);
 
         db.collection("NavCategory")
@@ -80,7 +100,7 @@ public class CategoryFragment extends Fragment {
 
                             }
                         } else {
-                            Toast.makeText(getActivity(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
                         }
@@ -88,11 +108,11 @@ public class CategoryFragment extends Fragment {
                 });
 
         ///////Search View
-        recyclerViewSearch = root.findViewById(R.id.cat_search_rec);
-        search_box = root.findViewById(R.id.cat_search_box);
+        recyclerViewSearch = findViewById(R.id.cat_search_rec);
+        search_box = findViewById(R.id.cat_search_box);
         viewAllModelList = new ArrayList<>();
-        viewAllAdapter = new ViewAllAdapter(getContext(),viewAllModelList);
-        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewAllAdapter = new ViewAllAdapter(getApplicationContext(),viewAllModelList);
+        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerViewSearch.setAdapter(viewAllAdapter);
         recyclerViewSearch.setHasFixedSize(true);
         search_box.addTextChangedListener(new TextWatcher() {
@@ -118,7 +138,7 @@ public class CategoryFragment extends Fragment {
                 }
             }
         });
-        return root;
+        // return root;
 
 
     }

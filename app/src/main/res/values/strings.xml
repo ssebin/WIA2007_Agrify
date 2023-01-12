@@ -2,16 +2,16 @@
     <string name="app_name">Agrify</string>
     <!-- Strings for On Boarding Screen -->
     <!--Titles-->
-    <string name="first_slide_title">Fresh and Health Grocery</string>
+    <string name="first_slide_title">Fresh and Healthy Grocery</string>
     <string name="second_slide_title">Amazing Discounts</string>
     <string name="third_slide_title">Pickup and Delivery</string>
-    <string name="welcome_Desc">We Are Happy To Have You! Get Ready To Buy Fresh and Freeze,Grocery and Anything You Want.</string>
+    <string name="welcome_Desc">Your friendly neighbourhood farm :)</string>
 
     <!--Descriptions-->
     <string name="slider"> slider for on boarding</string>
-    <string name="first_slide_desc">Shop without stress and pick your item from variety </string>
+    <string name="first_slide_desc">Shop without stress within your neighbourhood </string>
     <string name="second_slide_desc">Cheaper prices than local supermarket, offer great deals and discounts</string>
-    <string name="third_slide_desc"> Delivery and pickup is available at anywhere</string>
+    <string name="third_slide_desc"> Delivery and pickup are available right at your place</string>
     <!--Buttons-->
     <string name="skip_btn">Skip</string>
     <string name="next_btn">Next</string>
@@ -30,10 +30,20 @@
     <string name="menu_home">Home</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_category">Category</string>
-    <string name="menu_offers">Offers</string>
+    <string name="menu_offers">Events</string>
     <string name="menu_new_products">New Products</string>
-    <string name="menu_my_orders">My Orders</string>
-    <string name="menu_my_carts">My Carts</string>
+    <string name="menu_my_orders">Order History</string>
+    <string name="menu_my_carts">My Cart</string>
+    <string name="menu_farms">Farms</string>
+    <string name="menu_review">Reviews</string>
+    <string name="menu_Map">Map</string>
+    <string name="menu_logout">Log Out</string>
     <string name="title_activity_nav_drawer">NavDrawer</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="dashboard_title">Events</string>
+    <string name="dashboard_heading">Events</string>
+    <string name="dashboard_sub_title">Join events exclusive for your neighbourhood!</string>
+    <string name="location">Taman Connaught, Cheras</string>
+    <string name="desc">The Annual Christmas Bazaar brings out a variety of local arts &amp; crafts vendors just in time for the Holiday Season. The Christmas Bazaar is held annually on the Christmas Eve from 2 p.m. to 6 p.m. Each year, around 40 vendors fill the event with an assortment of handcrafted clothing, embroidery, jewelry, reefs, kitchenware, blankets, and decorations, just to name a few.</string>
 </resources>

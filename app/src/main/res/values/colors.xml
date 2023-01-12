@@ -10,4 +10,20 @@
     <color name="grey">#737373</color>
     <color name="light_grey">#DADADA</color>
     <color name="light_transparent">#BFE9E9E9</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+
+    <color name="colorPrimary">#A9E69F</color>
+    <color name="colorPrimaryDark">#58D05E</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="smokyWhite">#fafafa</color>
+    <color name="timeBackgroundGreen">#e8feed</color>
+    <color name="lightGrey">#D8D8D8</color>
+    <color name="darkYellow">#E1AD01</color>
+    <color name="red">#FF0000</color>
+
+    <color name="dialog_color_1">#FDD736</color>
+    <color name="dialog_color_2">#3B5796</color>
 </resources>

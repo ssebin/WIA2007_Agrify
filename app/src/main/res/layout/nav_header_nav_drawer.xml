@@ -14,15 +14,16 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/nav_header_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/profilefoto"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FFFFFF"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="start|top|end"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/profile_pic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="15dp"/>>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nav_header_name"
@@ -39,4 +40,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_subtitle" />
+
 </LinearLayout>
