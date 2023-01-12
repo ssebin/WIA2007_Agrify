@@ -53,16 +53,16 @@ public class SplashScreen extends AppCompatActivity {
 
         }*/
 
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
-//            new Handler().postDelayed(() -> {
-//                // User is signed in
-//                Intent i = new Intent(SplashScreen.this, NavDrawer.class);
-//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(i);
-//                    },SPLASH_SCREEN);
-//        } else {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(() -> {
+                // User is signed in
+                Intent i = new Intent(SplashScreen.this, NavDrawer.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                    },SPLASH_SCREEN);
+        } else {
             new Handler().postDelayed(() -> {
 
             /*firsTime only allow onBoarding
@@ -93,7 +93,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
 
             },SPLASH_SCREEN);
-        //}
+        }
 
 
 

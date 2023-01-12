@@ -168,6 +168,26 @@ public class NavDrawer extends AppCompatActivity {
         return true;
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if (id == R.id.action_farms){
+            Intent newIntent = new Intent(getApplicationContext(), ShopFragment.class);
+            startActivity(newIntent);
+        }
+        if (id == R.id.action_events){
+            Intent newIntent = new Intent(getApplicationContext(), EventsHome.class);
+            startActivity(newIntent);
+        }
+        if (id == R.id.action_cart){
+            Intent newIntent = new Intent(getApplicationContext(), MyCartsFragment.class);
+            startActivity(newIntent);
+        }
+        if (id == R.id.action_logout){
+            signOutUser();
+        }
+        return false;
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_nav_drawer);
