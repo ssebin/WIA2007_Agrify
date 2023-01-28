@@ -21,7 +21,6 @@ public class ViewReviewAdapter extends RecyclerView.Adapter<ViewReviewAdapter.Vi
     Context context;
     List<ViewReviewModel> list;
 
-
     public ViewReviewAdapter(Context context, List<ViewReviewModel> list) {
         this.context = context;
         this.list = list;

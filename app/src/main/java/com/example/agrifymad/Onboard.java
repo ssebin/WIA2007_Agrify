@@ -24,7 +24,6 @@ public class Onboard extends AppCompatActivity {
     Button getStarted;
     Animation animation;
     int currentPos;
-    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,25 +41,14 @@ public class Onboard extends AppCompatActivity {
 
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
-        /*
-        if (auth.getCurrentUser() != null){
-
-            startActivity(new Intent(Onboard.this, NavDrawer.class));
-            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
-            finish();
-        }*/
     }
-
 
     public void skip(View view){
         startActivity(new Intent(Onboard.this, Welcome.class));
-
     }
 
     public void next(View view){
-
         viewPager.setCurrentItem(currentPos+1);
-
     }
 
     private void addDots(int position){

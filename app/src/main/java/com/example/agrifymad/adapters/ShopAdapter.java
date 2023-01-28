@@ -15,33 +15,29 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.agrifymad.R;
+import com.example.agrifymad.activities.ViewAllActivity;
+import com.example.agrifymad.models.PopularModel;
 import com.example.agrifymad.models.ShopModel;
-import com.example.agrifymad.models.ViewAllModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
 
     Context context;
     List<ShopModel> list;
+    List<PopularModel> popularModelList;
     FirebaseFirestore firestore;
     FirebaseAuth auth;
 
-    public ShopAdapter(Context context, List<ShopModel> list) {
+    public ShopAdapter(Context context, List<ShopModel> list, List<PopularModel> popularModelList) {
         this.context = context;
         this.list = list;
+        this.popularModelList = popularModelList;
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
     }
@@ -59,6 +55,16 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
         holder.farmLocation.setText(list.get(position).getFarmLocation());
         holder.rating.setText(list.get(position).getRating());
         holder.phoneNumber.setText(list.get(position).getPhone());
+        holder.distance.setText(list.get(position).getDistance());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewAllActivity.class);
+                intent.putExtra("farmName","Bana Farm");
+                context.startActivity(intent);
+            }
+        });
 
         holder.phone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,11 +78,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
                 }else{
                     context.startActivity(intent);
                 }
-
-
             }
-
-
         });
 
         holder.location.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +95,6 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
                 }else{
                     context.startActivity(intent);
                 }
-
             }
         });
     }
@@ -106,8 +107,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView,phone,location;
-        TextView rating,farmName,farmLocation,phoneNumber;
-
+        TextView rating,farmName,farmLocation,phoneNumber,distance;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -119,15 +119,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
             farmName = itemView.findViewById(R.id.nav_farm_name);
             farmLocation = itemView.findViewById(R.id.nav_farm_location);
             phoneNumber = itemView.findViewById(R.id.nav_farm_number);
-
+            distance = itemView.findViewById(R.id.nav_farm_distance);
         }
-
     }
-
-
-
-
-
-
-
 }

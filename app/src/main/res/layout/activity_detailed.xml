@@ -19,7 +19,6 @@
         app:title="Product Details"
         app:titleTextColor="@color/white"/>
 
-
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/detailed_image"
         android:layout_width="match_parent"
@@ -77,7 +76,6 @@
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailed_farmName"/>
-
 
     <TextView
         android:id="@+id/detailed_rm"
@@ -213,7 +211,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
    

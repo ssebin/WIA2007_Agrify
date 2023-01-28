@@ -1,25 +1,18 @@
 package com.example.agrifymad.ui.home;
-
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
-import static com.google.firebase.firestore.core.CompositeFilter.Operator.AND;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,23 +21,17 @@ import com.example.agrifymad.adapters.HomeAdapter;
 import com.example.agrifymad.adapters.PopularAdapter;
 import com.example.agrifymad.adapters.RecommendedAdapter;
 import com.example.agrifymad.adapters.ViewAllAdapter;
-import com.example.agrifymad.databinding.FragmentHomeBinding;
 import com.example.agrifymad.models.HomeCategory;
 import com.example.agrifymad.models.PopularModel;
 import com.example.agrifymad.models.RecommendedModel;
 import com.example.agrifymad.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -167,8 +154,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-
-        ///////Search View
+        //Search View
         recyclerViewSearch = root.findViewById(R.id.search_rec);
         search_box = root.findViewById(R.id.search_box);
         viewAllModelList = new ArrayList<>();
@@ -225,9 +211,5 @@ public class HomeFragment extends Fragment {
                         }
                     });
         }
-
-
     }
-
-
 }

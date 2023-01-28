@@ -51,7 +51,6 @@ public class RecommendedModel {
                 this.img_url = img_url;
         }
 
-
         public String getDiscount() {
                 return discount;
         }

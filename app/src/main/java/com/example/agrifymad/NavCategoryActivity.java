@@ -9,18 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.agrifymad.adapters.NavCategoryDetailedAdapter;
-import com.example.agrifymad.models.HomeCategory;
 import com.example.agrifymad.models.NavCategoryDetailedModel;
-import com.example.agrifymad.models.NavCategoryModel;
-import com.example.agrifymad.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -54,7 +49,6 @@ public class NavCategoryActivity extends AppCompatActivity {
             }
         });
 
-
         db = FirebaseFirestore.getInstance();
 
         progressBar = findViewById(R.id.progressbar);
@@ -81,12 +75,9 @@ public class NavCategoryActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }
-
 
         //Getting leafy green
         if (type != null && type.equalsIgnoreCase("leafygreen")){
@@ -101,8 +92,6 @@ public class NavCategoryActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }
@@ -120,8 +109,6 @@ public class NavCategoryActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }
@@ -139,8 +126,6 @@ public class NavCategoryActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }
@@ -158,11 +143,8 @@ public class NavCategoryActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }
-
     }
 }

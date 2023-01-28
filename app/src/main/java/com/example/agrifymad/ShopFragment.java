@@ -3,30 +3,21 @@ package com.example.agrifymad;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.agrifymad.Repository.HistoryRepo;
-import com.example.agrifymad.adapters.HistoryRecyclerViewAdapter;
 import com.example.agrifymad.adapters.ShopAdapter;
-import com.example.agrifymad.adapters.ViewAllAdapter;
-import com.example.agrifymad.models.NavCategoryModel;
+import com.example.agrifymad.models.PopularModel;
 import com.example.agrifymad.models.ShopModel;
-import com.example.agrifymad.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -35,14 +26,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 public class ShopFragment extends AppCompatActivity {
 
     FirebaseFirestore db;
     RecyclerView recyclerView;
     ArrayList<ShopModel> shopModelList;
+    ArrayList<PopularModel> popularModelList;
     ShopAdapter shopAdapter;
     ProgressBar progressBar;
     Toolbar toolbar;
@@ -53,32 +43,9 @@ public class ShopFragment extends AppCompatActivity {
     private RecyclerView recyclerViewSearch;
     private ShopAdapter shopAdapters;
 
-
-/*
-    public static final String TAG = "MyFragment";
-
-    private int position;
-
-    // You can add other parameters here
-    public static ShopFragment newInstance(int position) {
-        Bundle args = new Bundle();
-        // Pass all the parameters to your bundle
-        args.putInt("pos", position);
-        ShopFragment fragment = new ShopFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.position = getArguments().getInt("pos");
-    } */
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //View root = inflater.inflate(R.layout.fragment_shop, container, false);
 
         setContentView(R.layout.fragment_shop);
 
@@ -87,7 +54,7 @@ public class ShopFragment extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled( true );
-        getSupportActionBar().setTitle("Farms");
+        getSupportActionBar().setTitle("Nearby Farms");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +65,6 @@ public class ShopFragment extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.shop_rec);
-        //recyclerView = root.findViewById(R.id.shop_rec);
 
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
@@ -106,27 +72,8 @@ public class ShopFragment extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         shopModelList = new ArrayList<>();
-        shopAdapter = new ShopAdapter(this, shopModelList);
+        shopAdapter = new ShopAdapter(this, shopModelList, popularModelList);
         recyclerView.setAdapter(shopAdapter);
-
-//        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
-//        getActionBar().setDisplayShowHomeEnabled(true);
-//
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-
-        /*LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        shopAdapter = new ShopAdapter(HistoryRepo.getHistoryRepo().getHistoryModelList());
-        Log.i("data-->",""+HistoryRepo.getHistoryRepo().getHistoryModelList().size());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(historyRecyclerViewAdapter);
-        historyRecyclerViewAdapter.notifyDataSetChanged();*/
 
         db.collection("Farm")
                 .get()
@@ -150,11 +97,12 @@ public class ShopFragment extends AppCompatActivity {
                         }
                     }
                 });
-        ///////Search View
+
+        //Search View
         recyclerViewSearch = findViewById(R.id.shop_search_rec);
         search_box = findViewById(R.id.shop_search_box);
         list = new ArrayList<>();
-        shopAdapters = new ShopAdapter(getApplicationContext(),list);
+        shopAdapters = new ShopAdapter(getApplicationContext(),list,popularModelList);
         recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerViewSearch.setAdapter(shopAdapters);
         recyclerViewSearch.setHasFixedSize(true);
@@ -182,7 +130,6 @@ public class ShopFragment extends AppCompatActivity {
             }
         });
 
-        // return this;
     }
 
     private void searchProduct(String type) {
@@ -206,8 +153,5 @@ public class ShopFragment extends AppCompatActivity {
                         }
                     });
         }
-
-
     }
-
 }

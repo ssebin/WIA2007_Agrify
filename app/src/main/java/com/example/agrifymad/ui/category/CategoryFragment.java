@@ -3,9 +3,7 @@ package com.example.agrifymad.ui.category;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -13,16 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agrifymad.R;
 import com.example.agrifymad.adapters.NavCategoryAdapter;
-import com.example.agrifymad.adapters.PopularAdapter;
 import com.example.agrifymad.adapters.ViewAllAdapter;
 import com.example.agrifymad.models.NavCategoryModel;
-import com.example.agrifymad.models.PopularModel;
 import com.example.agrifymad.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,8 +46,6 @@ public class CategoryFragment extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
-        //View root = inflater.inflate(R.layout.fragment_category, container, false);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_category);
@@ -97,7 +90,6 @@ public class CategoryFragment extends AppCompatActivity {
                                 navCategoryAdapter.notifyDataSetChanged();
                                 progressBar.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
-
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
@@ -107,7 +99,7 @@ public class CategoryFragment extends AppCompatActivity {
                     }
                 });
 
-        ///////Search View
+        //Search View
         recyclerViewSearch = findViewById(R.id.cat_search_rec);
         search_box = findViewById(R.id.cat_search_box);
         viewAllModelList = new ArrayList<>();
@@ -138,9 +130,6 @@ public class CategoryFragment extends AppCompatActivity {
                 }
             }
         });
-        // return root;
-
-
     }
 
     private void searchProduct(String type) {
@@ -164,8 +153,6 @@ public class CategoryFragment extends AppCompatActivity {
                         }
                     });
         }
-
-
     }
 
 }

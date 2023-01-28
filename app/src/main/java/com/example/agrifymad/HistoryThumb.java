@@ -14,9 +14,4 @@ public class HistoryThumb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_thumb);
     }
-
-    //public static void openInfo() {
-    //    Intent intent = new Intent(this, EventsMainPage.class);
-    //    startActivity(intent);
-    //}
 }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.agrifymad.DetailedActivity;
 import com.example.agrifymad.R;
-import com.example.agrifymad.activities.ViewAllActivity;
 import com.example.agrifymad.models.ViewAllModel;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -26,7 +22,6 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
 
     Context context;
     List<ViewAllModel> list;
-
 
     public ViewAllAdapter(Context context, List<ViewAllModel> list) {
         this.context = context;
@@ -56,7 +51,6 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
                     context.startActivity(intent);
                 }
             });
-
     }
 
     @Override

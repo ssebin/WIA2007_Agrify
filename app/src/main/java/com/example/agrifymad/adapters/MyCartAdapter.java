@@ -72,7 +72,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
                                 }
                             }
                         });
-
             }
         });
 
@@ -81,8 +80,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
         Intent intent = new Intent("My Total Amount");
         intent.putExtra("totalAmount",totalAmount);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-
-
     }
 
     @Override

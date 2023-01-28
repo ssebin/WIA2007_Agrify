@@ -13,9 +13,4 @@ public class EventsThumb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_thumb);
     }
-
-    //public static void openInfo() {
-    //    Intent intent = new Intent(this, EventsMainPage.class);
-    //    startActivity(intent);
-    //}
 }

@@ -1,5 +1,6 @@
 package com.example.agrifymad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,9 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.agrifymad.activities.Login;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -27,13 +30,24 @@ public class SplashScreen extends AppCompatActivity {
     TextView slogan;
 
     ProgressBar progressBar;
-    //FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("News")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Done";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+
+                    }
+                });
 
         bottom = AnimationUtils.loadAnimation(this,R.anim.bottom_anim);
 
@@ -43,15 +57,8 @@ public class SplashScreen extends AppCompatActivity {
         image.setAnimation(bottom);
         slogan.setAnimation(bottom);
 
-        //auth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        if (auth.getCurrentUser() != null){
-            progressBar.setVisibility(View.VISIBLE);
-            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
-
-        }*/
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -64,41 +71,11 @@ public class SplashScreen extends AppCompatActivity {
                     },SPLASH_SCREEN);
         } else {
             new Handler().postDelayed(() -> {
-
-            /*firsTime only allow onBoarding
-
-            SharedPreferences onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
-
-            boolean isFirstTime = onBoardingScreen.getBoolean("firstTime",true);
-
-
-            if(isFirstTime){
-
-                SharedPreferences.Editor editor = onBoardingScreen.edit();
-                editor.putBoolean("firstTime",false);
-                editor.commit();
-
-                Intent intent = new Intent(getApplicationContext(),Onboard.class);
-                startActivity(intent);
-                finish();
-
-            }else{
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
-            }
-            */
                 Intent intent = new Intent(getApplicationContext(),Onboard.class);
                 startActivity(intent);
                 finish();
 
             },SPLASH_SCREEN);
         }
-
-
-
-
     }
-
-
 }

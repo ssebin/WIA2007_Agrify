@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_farms"
         android:orderInCategory="100"
-        android:title="Farms"
+        android:title="Nearby Farms"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_events"

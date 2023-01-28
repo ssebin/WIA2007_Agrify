@@ -74,7 +74,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             rating = itemView.findViewById(R.id.review_rating);
             description = itemView.findViewById(R.id.review_desc);
             farmName = itemView.findViewById(R.id.review_farm);
-
         }
     }
 

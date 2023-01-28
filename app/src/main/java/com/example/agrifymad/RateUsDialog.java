@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -33,6 +34,7 @@ public class RateUsDialog extends Dialog{
             @Override
             public void onClick(View view) {
                 // code for clicking
+                Toast.makeText(getContext(),"Thank you for rating", Toast.LENGTH_SHORT).show();
                 dismiss();
             }
         });
@@ -40,6 +42,7 @@ public class RateUsDialog extends Dialog{
         laterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getContext(),"Rate next time!", Toast.LENGTH_SHORT).show();
                 // hide rating dialog
                 dismiss();
             }

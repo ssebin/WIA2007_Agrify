@@ -3,7 +3,6 @@ package com.example.agrifymad;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +25,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 public class DetailedActivity extends AppCompatActivity {
-
 
     TextView quantity;
     int totalQuantity = 1;
@@ -92,9 +90,6 @@ public class DetailedActivity extends AppCompatActivity {
             farmName.setText(viewAllModel.getFarmName());
         }
 
-
-
-
         addToCart=findViewById(R.id.add_to_cart);
 
         addToCart.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +97,6 @@ public class DetailedActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addedToCart();
             }
-
-
         });
 
 
@@ -118,7 +111,6 @@ public class DetailedActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         removeItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +152,5 @@ public class DetailedActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-
     }
 }

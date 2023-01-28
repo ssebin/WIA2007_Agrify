@@ -55,6 +55,7 @@ public class ViewAllActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         String type = getIntent().getStringExtra("type");
+        String farmName = getIntent().getStringExtra("farmName");
         recyclerView = findViewById(R.id.view_all_rec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setVisibility(View.GONE);
@@ -63,6 +64,24 @@ public class ViewAllActivity extends AppCompatActivity {
         viewAllAdapter = new ViewAllAdapter(this,viewAllModelList);
         recyclerView.setAdapter(viewAllAdapter);
 
+        // Getting a farm
+        if (farmName != null && farmName.equalsIgnoreCase("Bana Farm")){
+            firestore.collection("AllProducts").whereEqualTo("farmName","Bana Farm").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                    for(DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
+                        ViewAllModel viewAllModel = documentSnapshot.toObject(ViewAllModel.class);
+                        viewAllModelList.add(viewAllModel);
+                        viewAllAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
+
+
+                }
+            });
+        }
 
         //Getting fruits
         if (type != null && type.equalsIgnoreCase("fruit")){
@@ -153,8 +172,6 @@ public class ViewAllActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-
-
                 }
             });
         }

@@ -72,7 +72,5 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
             rating = itemView.findViewById(R.id.pop_rating);
 
         }
-
-
     }
 }

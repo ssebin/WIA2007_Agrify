@@ -1,18 +1,12 @@
 package com.example.agrifymad;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.agrifymad.models.MyCartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +27,6 @@ public class CheckOutActivity extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth auth;
     List<MyCartModel> cartModelList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +49,6 @@ public class CheckOutActivity extends AppCompatActivity {
             }
         });
 
-
         db.collection("CurrentUser").document(auth.getCurrentUser().getUid())
                 .collection("AddToCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -71,9 +63,6 @@ public class CheckOutActivity extends AppCompatActivity {
                                 cartModel.setDocumentId(documentId);
 
                                 cartModelList.add(cartModel);
-                                //cartAdapter.notifyDataSetChanged();
-                                //progressBar.setVisibility(View.GONE);
-                                //recyclerView.setVisibility(View.VISIBLE);
                             }
 
                             calculateTotalAmount(cartModelList);
@@ -81,11 +70,7 @@ public class CheckOutActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
     }
-
 
     private void calculateTotalAmount(List<MyCartModel> cartModelList) {
 
@@ -93,9 +78,6 @@ public class CheckOutActivity extends AppCompatActivity {
         for(MyCartModel myCartModel : cartModelList){
             totalAmount += myCartModel.getTotalPrice();
         }
-
         amount.setText(totalAmount);
     }
-
-
 }

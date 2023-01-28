@@ -7,8 +7,6 @@ public class EventModel {
         this.day = day;
         this.month = month;
         this.title = title;
-        //this.place = place;
-        //this.count = count;
         this.url = url;
     }
 
@@ -23,14 +21,6 @@ public class EventModel {
     public String getTitle() {
         return title;
     }
-
-    /*public String getPlace() {
-        return place;
-    }
-
-    public String getCount() {
-        return count;
-    } */
 
     public String getUrl() {
         return url;

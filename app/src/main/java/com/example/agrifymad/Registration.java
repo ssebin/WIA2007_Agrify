@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
 
-
     Button register;
     EditText name,email,password;
     TextView login;
@@ -46,7 +45,6 @@ public class Registration extends AppCompatActivity {
         password = findViewById(R.id.password_register);
         login = findViewById(R.id.sign_in);
 
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,8 +60,6 @@ public class Registration extends AppCompatActivity {
                     startActivity(new Intent(Registration.this, Login.class));
             }
         });
-
-
     }
 
     private void createUser() {

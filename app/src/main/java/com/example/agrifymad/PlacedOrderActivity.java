@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +26,6 @@ public class PlacedOrderActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     Toolbar toolbar;
-    MyCartAdapter cartAdapter;
-    List<MyCartModel> cartModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +51,6 @@ public class PlacedOrderActivity extends AppCompatActivity {
         });
 
         List<MyCartModel> list = (ArrayList<MyCartModel>) getIntent().getSerializableExtra("itemList");
-        // cartModelList = new ArrayList<>();
-        // cartAdapter = new MyCartAdapter(this,cartModelList);
 
         if(list != null && list.size() > 0){
             for(MyCartModel model : list){

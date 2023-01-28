@@ -67,6 +67,4 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             name = itemView.findViewById(R.id.cat_home_name);
         }
     }
-
-
 }

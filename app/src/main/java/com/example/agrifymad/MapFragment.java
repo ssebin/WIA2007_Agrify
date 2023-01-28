@@ -15,7 +15,6 @@ public class MapFragment extends Fragment {
 
 
     public MapFragment() {
-        // Required empty public constructor
     }
 
     Button button;
@@ -35,7 +34,6 @@ public class MapFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        // Inflate the layout for this fragment
         return root;
     }
 }

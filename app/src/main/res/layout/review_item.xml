@@ -26,9 +26,10 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="5dp">
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/review_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,22 +43,22 @@
                 android:textColor="@color/color_primary"/>
 
             <TextView
-                android:layout_marginTop="5dp"
                 android:id="@+id/review_farm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:singleLine="false"
                 android:text="FarmName"
-                android:textSize="14sp"
                 android:textColor="@color/grey"
-                />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/review_desc"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -90,7 +91,13 @@
                     android:layout_weight="1"
                     android:layout_marginTop="3dp"/>
 
-
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
             </LinearLayout>
 

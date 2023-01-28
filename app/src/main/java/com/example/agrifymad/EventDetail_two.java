@@ -17,8 +17,6 @@ public class EventDetail_two extends AppCompatActivity {
 
         getWindow().setStatusBarColor(Color.GRAY);
 
-        Intent intent = getIntent();
-
         ImageButton ImButton = findViewById(R.id.BtnCancel);
         ImButton.setOnClickListener(new View.OnClickListener() {
 
@@ -26,8 +24,6 @@ public class EventDetail_two extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 onBackPressed();
-//                Intent i = new Intent(v.getContext(), EventsHome.class);
-//                startActivity(i);
             }
         });
 

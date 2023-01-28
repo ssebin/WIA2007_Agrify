@@ -11,7 +11,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.agrifymad.activities.Login;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,7 +39,6 @@ public class Welcome extends AppCompatActivity {
         welcome_desc = findViewById(R.id.textView6);
         explore = findViewById(R.id.textView4);
 
-
         welcome.setAnimation(bottom);
         login.setAnimation(bottom);
         registration.setAnimation(bottom);
@@ -48,17 +46,8 @@ public class Welcome extends AppCompatActivity {
         welcome_title.setAnimation(bottom);
         explore.setAnimation(bottom);
 
-
         progressBar = findViewById(R.id.progressBar1);
         progressBar.setVisibility(View.GONE);
-/*
-        if (auth.getCurrentUser() != null){
-            progressBar.setVisibility(View.VISIBLE);
-            startActivity(new Intent(Welcome.this, NavDrawer.class));
-            Toast.makeText(this,"Please wait for your login", Toast.LENGTH_SHORT).show();
-            finish();
-        } */
-
     }
 
     public void login(View view){

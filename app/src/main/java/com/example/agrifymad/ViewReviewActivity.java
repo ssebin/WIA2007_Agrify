@@ -30,7 +30,6 @@ public class ViewReviewActivity extends AppCompatActivity {
     Toolbar toolbar;
     ProgressBar progressBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,8 +118,4 @@ public class ViewReviewActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
 }}

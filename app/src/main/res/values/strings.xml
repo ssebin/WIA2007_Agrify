@@ -34,8 +34,8 @@
     <string name="menu_new_products">New Products</string>
     <string name="menu_my_orders">Order History</string>
     <string name="menu_my_carts">My Cart</string>
-    <string name="menu_farms">Farms</string>
-    <string name="menu_review">Reviews</string>
+    <string name="menu_farms">Nearby Farms</string>
+    <string name="menu_review">Community Reviews</string>
     <string name="menu_Map">Map</string>
     <string name="menu_logout">Log Out</string>
     <string name="title_activity_nav_drawer">NavDrawer</string>

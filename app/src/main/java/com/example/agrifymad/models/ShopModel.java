@@ -6,17 +6,19 @@ public class ShopModel {
     String img_url;
     String rating;
     String phone;
+    String distance;
 
     public ShopModel() {
     }
 
 
-    public ShopModel(String farmName, String farmLocation, String img_url, String rating, String phone) {
+    public ShopModel(String farmName, String farmLocation, String img_url, String rating, String phone, String distance) {
         this.farmName = farmName;
         this.farmLocation = farmLocation;
         this.img_url = img_url;
         this.rating = rating;
         this.phone = phone;
+        this.distance = distance;
     }
 
     public String getFarmName() {
@@ -58,4 +60,6 @@ public class ShopModel {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getDistance() { return distance; }
 }
