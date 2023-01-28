@@ -26,7 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCartsFragment extends AppCompatActivity {
+public class MyCartsActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     FirebaseAuth auth;
@@ -38,7 +38,7 @@ public class MyCartsFragment extends AppCompatActivity {
     ProgressBar progressBar;
     Toolbar toolbar;
 
-    public MyCartsFragment() {
+    public MyCartsActivity() {
 
     }
 
@@ -46,7 +46,7 @@ public class MyCartsFragment extends AppCompatActivity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_my_carts);
+        setContentView(R.layout.activity_my_carts);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

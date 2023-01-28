@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.agrifymad.models.UserModel;
-import com.example.agrifymad.ui.category.CategoryFragment;
-import com.example.agrifymad.ui.profile.ProfileFragment;
+import com.example.agrifymad.ui.category.CategoryActivity;
+import com.example.agrifymad.ui.profile.ProfileActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -91,7 +91,7 @@ public class NavDrawer extends AppCompatActivity {
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_category){
-                    Intent newIntent = new Intent(getApplicationContext(), CategoryFragment.class);
+                    Intent newIntent = new Intent(getApplicationContext(), CategoryActivity.class);
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_offers){
@@ -99,7 +99,7 @@ public class NavDrawer extends AppCompatActivity {
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_farm){
-                    Intent newIntent = new Intent(getApplicationContext(), ShopFragment.class);
+                    Intent newIntent = new Intent(getApplicationContext(), ShopActivity.class);
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_my_orders){
@@ -107,15 +107,15 @@ public class NavDrawer extends AppCompatActivity {
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_my_carts){
-                    Intent newIntent = new Intent(getApplicationContext(), MyCartsFragment.class);
+                    Intent newIntent = new Intent(getApplicationContext(), MyCartsActivity.class);
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_review){
-                    Intent newIntent = new Intent(getApplicationContext(), ReviewFragment.class);
+                    Intent newIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_profile){
-                    Intent newIntent = new Intent(getApplicationContext(), ProfileFragment.class);
+                    Intent newIntent = new Intent(getApplicationContext(), ProfileActivity.class);
                     startActivity(newIntent);
                 }
                 if (id == R.id.nav_map){
@@ -148,7 +148,7 @@ public class NavDrawer extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         if (id == R.id.action_farms){
-            Intent newIntent = new Intent(getApplicationContext(), ShopFragment.class);
+            Intent newIntent = new Intent(getApplicationContext(), ShopActivity.class);
             startActivity(newIntent);
         }
         if (id == R.id.action_events){
@@ -156,7 +156,7 @@ public class NavDrawer extends AppCompatActivity {
             startActivity(newIntent);
         }
         if (id == R.id.action_cart){
-            Intent newIntent = new Intent(getApplicationContext(), MyCartsFragment.class);
+            Intent newIntent = new Intent(getApplicationContext(), MyCartsActivity.class);
             startActivity(newIntent);
         }
         if (id == R.id.action_logout){

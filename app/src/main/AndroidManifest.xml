@@ -23,14 +23,14 @@
 
         <activity
             android:name=".NavCategoryActivity"
-            android:parentActivityName=".ui.category.CategoryFragment"
+            android:parentActivityName=".ui.category.CategoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.category.CategoryFragment"
+            android:name=".ui.category.CategoryActivity"
             android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.profile.ProfileFragment"
+            android:name=".ui.profile.ProfileActivity"
             android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
@@ -46,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ReviewFragment"
+            android:name=".ReviewActivity"
             android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
@@ -54,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MyCartsFragment"
+            android:name=".MyCartsActivity"
             android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
@@ -62,7 +62,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ShopFragment"
+            android:name=".ShopActivity"
             android:parentActivityName=".NavDrawer"
             android:exported="false">
             <meta-data
@@ -113,7 +113,7 @@
 
         <activity
             android:name=".ViewReviewActivity"
-            android:parentActivityName=".ReviewFragment"
+            android:parentActivityName=".ReviewActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -129,7 +129,7 @@
         </activity>
         <activity
             android:name=".PaymentActivity"
-            android:parentActivityName=".MyCartsFragment"
+            android:parentActivityName=".MyCartsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

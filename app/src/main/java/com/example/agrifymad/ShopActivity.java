@@ -1,24 +1,23 @@
-package com.example.agrifymad.ui.category;
+package com.example.agrifymad;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.agrifymad.R;
-import com.example.agrifymad.adapters.NavCategoryAdapter;
-import com.example.agrifymad.adapters.ViewAllAdapter;
-import com.example.agrifymad.models.NavCategoryModel;
-import com.example.agrifymad.models.ViewAllModel;
+import com.example.agrifymad.adapters.ShopAdapter;
+import com.example.agrifymad.models.PopularModel;
+import com.example.agrifymad.models.ShopModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,35 +26,35 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class CategoryFragment extends AppCompatActivity {
+public class ShopActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     RecyclerView recyclerView;
-    List<NavCategoryModel> categoryModelList;
-    NavCategoryAdapter navCategoryAdapter;
+    ArrayList<ShopModel> shopModelList;
+    ArrayList<PopularModel> popularModelList;
+    ShopAdapter shopAdapter;
     ProgressBar progressBar;
     Toolbar toolbar;
 
     //Search View
     EditText search_box;
-    private List<ViewAllModel> viewAllModelList;
+    private ArrayList<ShopModel> list;
     private RecyclerView recyclerViewSearch;
-    private ViewAllAdapter viewAllAdapter;
+    private ShopAdapter shopAdapters;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_category);
+
+        setContentView(R.layout.activity_shop);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled( true );
-        getSupportActionBar().setTitle("Category");
+        getSupportActionBar().setTitle("Nearby Farms");
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,19 +64,18 @@ public class CategoryFragment extends AppCompatActivity {
         });
 
         db = FirebaseFirestore.getInstance();
-        recyclerView = findViewById(R.id.cat_rec);
+        recyclerView = findViewById(R.id.shop_rec);
 
         progressBar = findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
-        //Category items
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        categoryModelList = new ArrayList<>();
-        navCategoryAdapter = new NavCategoryAdapter(this,categoryModelList);
-        recyclerView.setAdapter(navCategoryAdapter);
+        shopModelList = new ArrayList<>();
+        shopAdapter = new ShopAdapter(this, shopModelList, popularModelList);
+        recyclerView.setAdapter(shopAdapter);
 
-        db.collection("NavCategory")
+        db.collection("Farm")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>(){
                     @Override
@@ -85,11 +83,12 @@ public class CategoryFragment extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                NavCategoryModel navCategoryModel = document.toObject(NavCategoryModel.class);
-                                categoryModelList.add(navCategoryModel);
-                                navCategoryAdapter.notifyDataSetChanged();
+                                ShopModel shopModel = document.toObject(ShopModel.class);
+                                shopModelList.add(shopModel);
+                                shopAdapter.notifyDataSetChanged();
                                 progressBar.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
+
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "Error"+task.getException(),Toast.LENGTH_SHORT).show();
@@ -100,12 +99,12 @@ public class CategoryFragment extends AppCompatActivity {
                 });
 
         //Search View
-        recyclerViewSearch = findViewById(R.id.cat_search_rec);
-        search_box = findViewById(R.id.cat_search_box);
-        viewAllModelList = new ArrayList<>();
-        viewAllAdapter = new ViewAllAdapter(getApplicationContext(),viewAllModelList);
+        recyclerViewSearch = findViewById(R.id.shop_search_rec);
+        search_box = findViewById(R.id.shop_search_box);
+        list = new ArrayList<>();
+        shopAdapters = new ShopAdapter(getApplicationContext(),list,popularModelList);
         recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerViewSearch.setAdapter(viewAllAdapter);
+        recyclerViewSearch.setAdapter(shopAdapters);
         recyclerViewSearch.setHasFixedSize(true);
         search_box.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,37 +121,37 @@ public class CategoryFragment extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
                 if(editable.toString().isEmpty()){
-                    viewAllModelList.clear();
-                    viewAllAdapter.notifyDataSetChanged();
+                    list.clear();
+                    shopAdapters.notifyDataSetChanged();
 
                 }else{
                     searchProduct(editable.toString());
                 }
             }
         });
+
     }
 
     private void searchProduct(String type) {
 
         if(!type.isEmpty()){
 
-            db.collection("AllProducts").whereEqualTo("type", type).get()
+            db.collection("Farm").whereEqualTo("farmName", type).get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                             if (task.isSuccessful() && task.getResult() != null){
-                                viewAllModelList.clear();
-                                viewAllAdapter.notifyDataSetChanged();
+                                list.clear();
+                                shopAdapters.notifyDataSetChanged();
                                 for(DocumentSnapshot doc: task.getResult().getDocuments()){
-                                    ViewAllModel viewAllModel = doc.toObject(ViewAllModel.class);
-                                    viewAllModelList.add(viewAllModel);
-                                    viewAllAdapter.notifyDataSetChanged();
+                                    ShopModel shopModel = doc.toObject(ShopModel.class);
+                                    list.add(shopModel);
+                                    shopAdapters.notifyDataSetChanged();
                                 }
                             }
                         }
                     });
         }
     }
-
 }

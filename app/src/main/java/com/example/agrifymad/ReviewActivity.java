@@ -23,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewFragment extends AppCompatActivity {
+public class ReviewActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
     RecyclerView recyclerView;
@@ -36,7 +36,7 @@ public class ReviewFragment extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_review);
+        setContentView(R.layout.activity_review);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
